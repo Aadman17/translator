@@ -11,35 +11,34 @@ translator = Translator()
 
 # Dictionary of Indian languages with their codes
 INDIAN_LANGUAGES = {
-    '1': ('hi', 'Hindi'),
-    '2': ('bn', 'Bengali'),
-    '3': ('ta', 'Tamil'),
-    '4': ('te', 'Telugu'),
-    '5': ('mr', 'Marathi'),
-    '6': ('gu', 'Gujarati'),
-    '7': ('kn', 'Kannada'),
-    '8': ('ml', 'Malayalam'),
-    '9': ('pa', 'Punjabi'),
-    '10': ('ur', 'Urdu')
+    '1': ('hi','Hindi'),
+    '2': ('bn','Bengali'),
+    '3': ('ta','Tamil'),
+    '4': ('te','Telugu'),
+    '5': ('mr','Marathi'),
+    '6': ('gu','Gujarati'),
+    '7': ('kn','Kannada'),
+    '8': ('ml','Malayalam'),
+    '9': ('pa','Punjabi'),
+    '10': ('ur','Urdu')
 }
 
 
 def display_menu():
-    """Display the language selection menu"""
-    print("\n" + "=" * 50)
-    print("     ENGLISH ↔ INDIAN LANGUAGES TRANSLATOR")
-    print("=" * 50)
+    #Display the language selection menu
+    print("\n"+"="*50)
+    print(" ENGLISH to and fro INDIAN LANGUAGES TRANSLATOR")
+    print("="*50)
     print("\nSelect target language:")
-    print("-" * 50)
-    for key, (code, name) in INDIAN_LANGUAGES.items():
+    print("-"*50)
+    for key,(code, name) in INDIAN_LANGUAGES.items():
         print(f"{key}. {name}")
-    print("-" * 50)
+    print("-"*50)
     print("0. Exit")
     print()
 
 
 async def translate_text(text, target_lang_code, source_lang='en'):
-    """Translate text asynchronously"""
     try:
         # translation
         result = await translator.translate(text, src=source_lang, dest=target_lang_code)
@@ -49,7 +48,6 @@ async def translate_text(text, target_lang_code, source_lang='en'):
 
 
 async def detect_language(text):
-    """Detect the language of input text"""
     try:
         detected = await translator.detect(text)
         lang_name = LANGUAGES.get(detected.lang, 'Unknown')
@@ -60,7 +58,7 @@ async def detect_language(text):
 
 async def main():
     """Main function to run the translator"""
-    print("\n🌍 Welcome to the Language Translator! 🌍")
+    print("\n Welcome to the Language Translator! :)")
 
     while True:
         display_menu()
@@ -79,12 +77,12 @@ async def main():
         target_code, target_name = INDIAN_LANGUAGES[choice]
 
         # translation direction
-        print(f"\n✓ Selected Language: {target_name}")
+        print(f"\n Selected Language: {target_name}")
         print("\nTranslation Direction:")
-        print(f"1. English → {target_name}")
-        print(f"2. {target_name} → English")
+        print(f"1. English to {target_name}")
+        print(f"2. {target_name} to English")
 
-        direction = input("\nChoose direction (1 or 2): ").strip()
+        direction = input("\nChoose direction (1or2): ").strip()
 
         if direction not in ['1', '2']:
             print("\n Invalid direction! Please choose 1 or 2.")
@@ -107,17 +105,17 @@ async def main():
         if direction == '1':
             # English to Indian language
             translated = await translate_text(text_input, target_code, 'en')
-            print("\n" + "=" * 50)
+            print("\n"+"="*50)
             print(f"Original (English): {text_input}")
             print(f"Translated ({target_name}): {translated}")
-            print("=" * 50)
+            print("="*50)
         else:
             # Indian language to English
             translated = await translate_text(text_input, 'en', target_code)
-            print("\n" + "=" * 50)
+            print("\n"+"="*50)
             print(f"Original ({target_name}): {text_input}")
             print(f"Translated (English): {translated}")
-            print("=" * 50)
+            print("="*50)
 
         # Option to continue or exit
         print("\n")
@@ -128,7 +126,7 @@ async def main():
 
 
 # Run the translator
-if __name__ == "__main__":
+if __name__=="__main__":
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
