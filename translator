@@ -82,7 +82,7 @@ async def main():
         print(f"1. English to {target_name}")
         print(f"2. {target_name} to English")
 
-        direction = input("\nChoose direction (1or2): ").strip()
+        direction = input("\nChoose direction (1 or 2):").strip()
 
         if direction not in ['1', '2']:
             print("\n Invalid direction! Please choose 1 or 2.")
@@ -103,14 +103,14 @@ async def main():
 
         if direction=='1':
             # English to Indian language
-            translated=await translate_text(text_input, target_code, 'en')
+            translated=await translate_text(text_input, target_code,'en')
             print("\n"+"="*50)
             print(f"Original (English): {text_input}")
             print(f"Translated ({target_name}): {translated}")
             print("="*50)
         else:
             # Indian language to English
-            translated = await translate_text(text_input, 'en', target_code)
+            translated = await translate_text(text_input,'en', target_code)
             print("\n"+"="*50)
             print(f"Original ({target_name}): {text_input}")
             print(f"Translated (English): {translated}")
