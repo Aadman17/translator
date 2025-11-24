@@ -54,15 +54,13 @@ async def detect_language(text):
         return detected.lang, lang_name
     except:
         return None, None
-
-
 async def main():
     """Main function to run the translator"""
     print("\n Welcome to the Language Translator! :)")
 
     while True:
         display_menu()
-        choice = input("Enter your choice (0-10): ").strip()
+        choice=input("Enter your choice (0-10):").strip()
 
         if choice=='0':
             print("\n Thank you for using the translator! Goodbye!")
@@ -72,7 +70,7 @@ async def main():
             print("\n Invalid choice! Please select a number from 0-10.")
             continue
 
-        target_code,target_name = INDIAN_LANGUAGES[choice]
+        target_code,target_name=INDIAN_LANGUAGES[choice]
 
         # translation direction
         print(f"\n Selected Language: {target_name}")
@@ -81,7 +79,6 @@ async def main():
         print(f"2. {target_name} to English")
 
         direction = input("\nChoose direction (1 or 2):").strip()
-
         if direction not in ['1', '2']:
             print("\n Invalid direction! Please choose 1 or 2.")
             continue
@@ -89,7 +86,6 @@ async def main():
         # text to translate
         print("\n"+"-"*50)
         text_input=input("Enter text to translate (or 'back' to return): ")
-
         if text_input.lower()=='back':
             continue
         if not text_input:
@@ -115,7 +111,7 @@ async def main():
 
         # Option to continue or exit
         print("\n")
-        continue_choice = input("Press Enter to continue or type 'exit' to quit: ").strip()
+        continue_choice=input("Press Enter to continue or type 'exit' to quit: ").strip()
         if continue_choice.lower()=='exit':
             print("\n Thank you for using the translator! Goodbye!")
             break
