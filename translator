@@ -62,11 +62,9 @@ async def main():
 
     while True:
         display_menu()
-
-        # user's language choice
         choice = input("Enter your choice (0-10): ").strip()
 
-        if choice == '0':
+        if choice=='0':
             print("\n Thank you for using the translator! Goodbye!")
             sys.exit()
 
@@ -74,7 +72,7 @@ async def main():
             print("\n Invalid choice! Please select a number from 0-10.")
             continue
 
-        target_code, target_name = INDIAN_LANGUAGES[choice]
+        target_code,target_name = INDIAN_LANGUAGES[choice]
 
         # translation direction
         print(f"\n Selected Language: {target_name}")
@@ -94,7 +92,6 @@ async def main():
 
         if text_input.lower()=='back':
             continue
-
         if not text_input:
             print("\n Please enter some text to translate!")
             continue
