@@ -89,22 +89,21 @@ async def main():
             continue
 
         # text to translate
-        print("\n" + "-" * 50)
-        text_input = input("Enter text to translate (or 'back' to return): ")
+        print("\n"+"-"*50)
+        text_input=input("Enter text to translate (or 'back' to return): ")
 
-        if text_input.lower() == 'back':
+        if text_input.lower()=='back':
             continue
 
         if not text_input:
             print("\n Please enter some text to translate!")
             continue
 
-        # Perform translation based on direction
         print("\n Translating...")
 
-        if direction == '1':
+        if direction=='1':
             # English to Indian language
-            translated = await translate_text(text_input, target_code, 'en')
+            translated=await translate_text(text_input, target_code, 'en')
             print("\n"+"="*50)
             print(f"Original (English): {text_input}")
             print(f"Translated ({target_name}): {translated}")
@@ -120,7 +119,7 @@ async def main():
         # Option to continue or exit
         print("\n")
         continue_choice = input("Press Enter to continue or type 'exit' to quit: ").strip()
-        if continue_choice.lower() == 'exit':
+        if continue_choice.lower()=='exit':
             print("\n Thank you for using the translator! Goodbye!")
             break
 
