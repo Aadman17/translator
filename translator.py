@@ -25,7 +25,6 @@ INDIAN_LANGUAGES = {
 
 
 def display_menu():
-    #Display the language selection menu
     print("\n"+"="*50)
     print(" ENGLISH to and from INDIAN LANGUAGES TRANSLATOR")
     print("="*50)
@@ -40,7 +39,6 @@ def display_menu():
 
 async def translate_text(text, target_lang_code, source_lang='en'):
     try:
-        # translation
         result = await translator.translate(text, src=source_lang, dest=target_lang_code)
         return result.text
     except Exception as e:
@@ -55,7 +53,6 @@ async def detect_language(text):
     except:
         return None, None
 async def main():
-    """Main function to run the translator"""
     print("\n Welcome to the Language Translator! :)")
 
     while True:
